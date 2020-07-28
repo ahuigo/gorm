@@ -77,6 +77,8 @@ func (s *postgres) DataTypeOf(field *StructField) string {
 				if isJSON(dataValue) {
 					sqlType = "jsonb"
 				}
+			} else if IsStringArrayOrSlice(dataValue) {
+				sqlType = "text[]"
 			}
 		}
 	}

@@ -194,3 +194,8 @@ func (commonDialect) parseInt(value interface{}) (int64, error) {
 func IsByteArrayOrSlice(value reflect.Value) bool {
 	return (value.Kind() == reflect.Array || value.Kind() == reflect.Slice) && value.Type().Elem() == reflect.TypeOf(uint8(0))
 }
+
+// IsByteArrayOrSlice returns true of the reflected value is an array or slice of string
+func IsStringArrayOrSlice(value reflect.Value) bool {
+	return (value.Kind() == reflect.Array || value.Kind() == reflect.Slice) && value.Type().Elem().Kind() == reflect.String
+}
